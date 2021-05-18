@@ -1,0 +1,21 @@
+doctype html
+head
+	title User List
+div#header
+	include ../partials/header
+body(style = 'background-color: #fffaf0')
+	h2 Users List
+
+	div#search( style = 'float:middle; text-align: center; padding : 5px; margin : 3px')
+		form(method = 'Post' action ='/users/search')
+			input(type='search' name='name' style ='font-size: 30px' placeholder='Search...' )
+			button(type = 'submit' style='font-size: 30px' ) Search
+		br
+	div#userlist( style = 'float:middle; font-size: 20px; text-align: center; padding : 5px; margin : 3px')
+		ul
+			each user in users
+				a(href ="/users/"+user.id style = 'font-size: 20px; padding: 14px 25px; text-align: center; text-decoration: none; display: inline-bloc' )= user.username +'( ' + user.id + ' )'
+				br
+				br
+	div#footer
+		include ../partials/footer

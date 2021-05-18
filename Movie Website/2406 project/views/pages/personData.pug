@@ -1,0 +1,30 @@
+doctype html
+head
+	title Person Page
+	include ../partials/header
+body(style = 'background-color: #fffaf0')
+	div#main
+		h2 This is #{person.personName}
+		div#workedwith
+			p Worked With
+				ul
+					each p in person.workedWith
+						a(href ="/people/"+p.personId )=p.personName
+						br
+						br
+		br
+		div#moviesIn
+			p Worked In
+				ul
+					each m in person.moviesIn
+						a(href ="/movies/"+m.movieID )=m.movieName
+						br
+						br
+		br
+	div#followbutton(style = 'position: bottom')
+		div#follow
+			form(method = "GET" action = "/people/follow/"+person.id)
+				button(type=submit) Follow/Unfollow
+				br
+				br
+	include ../partials/footer

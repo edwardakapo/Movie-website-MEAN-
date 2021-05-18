@@ -1,0 +1,34 @@
+doctype html
+head
+	title Movie List
+div#header
+	include ../partials/header
+body(style = 'background-color: #fffaf0')
+	h2 Search for Movies
+	.search( style = 'float:middle; font-size: 20px;text-align: center; padding : 5px; margin : 3px')
+		form(method = 'Post' action ='/movies/search')
+			input#query(type='search' style = 'font-size: 20px' name='Title' placeholder='Title...' )
+			br
+			br
+			input#query(type='number'  style = 'font-size: 20px' name='Year' min='1700' max='9999' placeholder='Year...')
+			br
+			br
+			each genre in genres
+				input(type='radio' id = 'same' style='cursor:pointer' name='genre' value= genre )
+				label(for=genre) #{genre}
+			br
+			br
+			label(for='quantity') Minimum Rating:
+			input(type='number' name='rating' min='0' max='10')
+			br 
+			br
+			button(type = 'submit' style ='font-size : 20px') Search
+	hr
+	div#list( style ='font-size: 20px;float:middle; text-align: center; padding : 5px; margin : 3px')
+		ul
+			each movie in movies
+				a(href ="/movies/"+ movie.id)= movie.title +' (  ' + movie.year+ ' ) '
+				br
+
+div#footer
+	include ../partials/footer

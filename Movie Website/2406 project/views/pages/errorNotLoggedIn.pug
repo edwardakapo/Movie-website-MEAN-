@@ -1,0 +1,33 @@
+doctype html
+head
+	title Error
+	include ../partials/header
+body(style = 'background-color: #fffaf0')
+	h2 You need to be a user to do that
+			div#Login
+				h2 Login
+					form(method = "POST" action = "/login")
+						label(for = "username") Enter Username  
+						input(type='text' name='username' placeholder='Username' required)
+						br
+						label(for = "Password") Enter Password 
+						input(type='Password' name='password' placeholder='Password' required)
+						br
+						button(type='submit') Log In
+						br
+						br
+						br
+			p OR
+			div#CreateUser
+				h2 Create a new User
+					form(method = "POST" action = "/users")
+						label(for = "username") Enter Username
+						input(type='text' name='username' placeholder='Username' required)
+						br
+						label(for = "Password") Enter Password
+						input(type='Password' name='password' placeholder='Password' required)
+						br
+						button(type='submit') Create User
+						br
+	include ../partials/footer
+

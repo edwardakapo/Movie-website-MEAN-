@@ -1,0 +1,21 @@
+doctype html
+head 
+	title People List
+div#header
+	include ../partials/header
+body(style = 'background-color: #fffaf0')
+	h2 Find Movie staff 
+	div#search( style = 'float:middle ; text-align: center')
+		form(method = 'Post' action ='/people/search')
+			input(type='search' style = 'font-size: 30px' name='name' placeholder='Enter name...' )
+			button(type = 'submit' style = 'font-size: 30px') Search
+			hr
+	div#peoplelist( style = 'float:middle; text-align: center; padding : 5px; margin : 3px' )
+		ul
+			each person in people
+				a(href ="/people/"+person.id style = 'font-size: 20px; padding: 14px 25px; text-align: center; text-decoration: none; display: inline-bloc')= person.personName +'( ' + person.id + ' )'
+				br
+				br
+
+div#footer
+	include ../partials/footer

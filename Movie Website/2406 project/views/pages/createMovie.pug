@@ -1,0 +1,49 @@
+doctype html
+head
+	title Create Movie Form
+div#header
+	include ../partials/header
+body(style = 'background-color: #fffaf0')
+div#create
+	h2 Create a new Movie
+			p *Note put a comma when you want multiple entries
+			form(method = "POST" action = "/movies")
+				label(for = "title" style = 'float:middle; font-size: 20px') Title
+				br  
+				input(type='text' style = 'float:middle; font-size: 20px' name='title' placeholder='Name....' required)
+				br
+				label(for = "year" style = 'float:middle; font-size: 20px') Year
+				br  
+				input(type='number' min='1700' max='9999' name='year' style = 'float:middle; font-size: 20px' placeholder='year....' required)
+				br
+				label(for = "runtime" style = 'float:middle; font-size: 20px') Movie Runtime
+				br  
+				input(type='text' name='runtime' placeholder='runtime....' style = 'float:middle; font-size: 20px' required)
+				br
+				label(for = "genre" style = 'float:middle; font-size: 20px') Genres
+				br  
+				input(type='text' style = 'float:middle; font-size: 20px' name='genres' placeholder='genres....' required)
+				br
+				label(for = "director" style = 'float:middle; font-size: 20px') Director
+				br  
+				input(type='text' style = 'float:middle; font-size: 20px' name='director' placeholder='director....' required)
+				br
+				label(for = "writers" style = 'float:middle; font-size: 20px') Writers
+				br  
+				input(type='text' name='writers' placeholder='writers....' style = 'float:middle; font-size: 20px' required)
+				br
+				label(for = "actors" style = 'float:middle; font-size: 20px') Actors
+				br  
+				input(type='text' name='actors' placeholder='actors....' style = 'float:middle; font-size: 20px' required)
+				br
+				label(for = "plot" style = 'float:middle; font-size: 20px') Plot
+				br  
+				input(type='text' name='plot' placeholder='plot....' style = 'float:middle; font-size: 20px' required)
+				br
+				label(for = "poster" style = 'float:middle; font-size: 20px') Poster Link
+				br
+				input(type='text' name='poster' placeholder='Poster....' style = 'float:middle; font-size: 20px' required)
+				br
+				button(type='submit' style = 'float:middle; font-size: 20px') Create Movie
+				br
+			include ../partials/footer

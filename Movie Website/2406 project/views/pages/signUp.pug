@@ -1,0 +1,38 @@
+doctype html
+head
+	title Create User Form
+div#header
+		a(href="/about" style = 'font-size: 20px ; margin : 10px') About
+		| 
+		| 
+		a(href="/people" style = 'font-size: 20px ; margin : 10px') People 
+		| 
+		| 
+		a(href="/movies" style = 'font-size: 20px ; margin : 10px') Movies
+		| 
+		| 
+		a(href="/users" style = 'font-size: 20px ; margin : 10px') Users
+		|
+		| 
+		a(href = "/login" style = 'font-size: 20px ; margin : 10px') Log In
+		|
+		| 
+		a(href = "/signup" style = 'font-size: 20px ; margin : 10px') Sign Up
+body(style = 'background-color: #fffaf0')
+	div#text( style = 'float:middle; font-size: 20px;text-align: center; padding : 5px; margin : 3px')
+		h2 Welcome to The Movie Warehouse
+		h2 Create a new User 
+		div#signup( style = 'float:middle; font-size: 20px;text-align: center; padding : 5px; margin : 3px')
+			form(method = "POST" action = "/users")
+			label(for = "username"  style = 'float:middle; font-size: 20px;text-align: center; padding : 5px; margin : 3px') Enter Username and Password  
+			br
+			br
+			input(type='text' name='username' placeholder='Username...' required  style = 'float:middle; font-size: 20px')
+			br
+			br
+			input(type='Password' name='password' placeholder='Password....' required  style = 'float:middle; font-size: 20px')
+			br
+			br
+			button(type='submit' style = 'float:middle; font-size: 20px;text-align: center; padding : 5px; margin : 3px' ) Create User
+			br
+			include ../partials/footer

@@ -1,0 +1,35 @@
+div#header(style = 'background-color: #fffaf0') 
+	if session && session.loggedIn 
+		a(href="/logout" style = 'font-size: 20px ; margin : 10px') Log Out
+		| 
+		| 
+		a(href="/about" style = 'font-size: 20px ; margin : 10px') About
+		| 
+		| 
+		a(href="/people" style = 'font-size: 20px ; margin : 10px') People 
+		| 
+		| 
+		a(href="/movies" style = 'font-size: 20px ; margin : 10px') Movies
+		| 
+		| 
+		a(href="/users" style = 'font-size: 20px ; margin : 10px') Users
+		|
+		| 
+		a(href ="/users/" + session.userId  style = 'font-size: 20px ; margin : 10px') User Profile
+	else  
+		a(href="/about" style = 'font-size: 20px ; margin : 10px') About
+		| 
+		| 
+		a(href="/people" style = 'font-size: 20px ; margin : 10px') People 
+		| 
+		| 
+		a(href="/movies" style = 'font-size: 20px ; margin : 10px') Movies
+		| 
+		| 
+		a(href="/users" style = 'font-size: 20px ; margin : 10px') Users
+		|
+		| 
+		a(href = "/login" style = 'font-size: 20px ; margin : 10px') Log In
+		|
+		| 
+		a(href = "/signup" style = 'font-size: 20px ; margin : 10px') Sign Up

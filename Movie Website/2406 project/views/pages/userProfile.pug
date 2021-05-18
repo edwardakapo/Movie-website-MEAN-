@@ -1,0 +1,126 @@
+html
+	head
+		title User Page
+	body
+			if session.loggedIn && session.userId == user.id && session.contributing == true
+				include ../partials/header
+					div#main
+						h2 Welcome #{user.username}
+						br
+						p PeopleFollowing
+						div#personFollowing
+							ul
+								each person in user.peopleFollowing
+									a(href = "/people/"+person.id)= person.personName	
+									br
+						p UsersFollowing
+						div#usersFollowing
+							ul
+								each u in user.usersFollowing
+									a(href = "/users/"+u.id)= u.username
+									br
+						p Reviews
+						div#reviews
+							ul
+								each m in user.reviews
+									a(href = "/movies/"+m.movieId)= m.title
+									p rating #{m.score}
+									p #{m.summary}
+									p #{m.text}
+									br
+							ul
+							each m in user.short
+									a(href = "/movies/"+m.movieId)= m.title
+									p rating #{m.score}
+									br
+						p Recommended Movies
+						div#reccommended
+							ul
+								each r in user.recommended
+									a(href = "/movies/"+r.movieId)= r.title
+									br
+						div#contributing
+							form(method = "GET" action = "/users/contributing/" + user.id)
+								button(type= submit ) Change to a Normal User
+							br
+						div#addmovie
+							form(method = "GET" action = "/createMovie")
+								button(type= submit ) Create a Movie
+							br
+						div#addperson
+							form(method = "GET" action = "/createPerson")
+								button(type= submit ) Create a Person
+							br
+
+				include ../partials/footer
+			else if session.loggedIn && session.userId == user.id && session.contributing == false
+				include ../partials/header
+					div#main
+						h2 Welcome #{user.username}
+						br
+						p PeopleFollowing
+						div#personFollowing
+							ul
+								each person in user.peopleFollowing
+									a(href = "/people/"+person.id)= person.personName	
+									br
+						p UsersFollowing
+						div#usersFollowing
+							ul
+								each u in user.usersFollowing
+									a(href = "/users/"+u.id)= u.username
+									br
+						p Reviews
+						div#reviews
+							ul
+								each m in user.reviews
+									a(href = "/movies/"+m.movieId)= m.title
+									p rating #{m.score}
+									p #{m.summary}
+									p #{m.text}
+									br
+							ul
+							each m in user.short
+									a(href = "/movies/"+m.movieId)= m.title
+									p rating #{m.score}
+									br
+						p Recommended Movies
+						div#reccommended
+							ul
+								each y in r
+									a(href = "/movies/"+y.movieId)= y.title
+									br
+						div#contributing
+							form(method = "GET" action = "/users/contributing/"+user.id)
+								button(type=submit) Change to a Contributing User
+				include ../partials/footer
+			else 
+				include ../partials/header
+					div#main
+							h2 This is #{user.username}
+							br
+							p People Following
+							div#personFollowing
+							ul
+								each person in user.peopleFollowing
+									a(href = "/people/"+person.id)= person.personName
+									br
+							p Reviews
+							div#reviews
+							ul
+								each m in user.reviews
+									a(href = "/movies/"+m.movieId)= m.title
+									p rating #{m.score}
+									p #{m.summary}
+									p #{m.text}
+									br
+							ul
+							each m in user.short
+									a(href = "/movies/"+m.movieId)= m.title
+									p rating #{m.score}
+									br
+							div#follow
+								form(method = "GET" action = "/users/follow/"+user.id)
+									button(type=submit) Follow/Unfollow
+
+				include ../partials/footer

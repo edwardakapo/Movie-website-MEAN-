@@ -1,0 +1,236 @@
+doctype html
+head
+	title Movie Page
+	if session.loggedIn && session.contributing == true
+		include ../partials/header
+			div#main
+				a(href= "" + movie.Poster style ="float:middle")
+					img(alt='Google' src= movie.Poster style='max-width:960px')
+				h2 #{movie.Title}
+				br
+				p Initial Release : #{movie.Year}
+				br
+				p Plot :
+				p #{movie.Plot}
+				br
+				p Genres
+					ul
+						each g in movie.Genre
+							a(href="/movies/search/" +g)= g 
+							br
+				br
+				p Director
+				a(href="/people/search/" + movie.Director)= movie.Director 
+				br
+				p Actors
+					ul
+						each a in movie.Actors
+							a(href="/people/search/" +a)= a 
+							br
+				.search
+					form(method = 'Post' action ='/movies/addActor/' + movie.id)
+						label(for = "username") Add Actor to Movie 
+						br 
+						input(type='text' name='Actor' placeholder='Actor....' required)
+						br
+						button(type='submit') Add Actor
+						br
+						br
+				p Writers
+					ul
+						each w in movie.Writer
+							a(href="/people/search/" +w)= w 
+							br
+				.search
+					form(method = 'Post' action ='/movies/addWriter/' + movie.id)
+						label(for = "") Add Writer to Movie  
+						br
+						input(type='text' name='Writer' placeholder='Writer....' required)
+						br
+						button(type='submit') Add Writer 
+						br
+						br
+				p Similar Movies
+					ul
+						each m in similar
+							a(href="/movies/" +m.id)= m.title 
+							br
+				hr
+				p Reviews
+					ul
+						each r in movie.reviews
+							a(href="/users/" +r.userId)= r.username
+							p Score #{r.score}
+							p #{r.summary}
+							p #{r.text}
+							br
+					ul
+						each r in movie.short
+							a(href="/users/" +r.userId)= r.username
+							p Score #{r.score}
+							br
+				p Average Review : #{movie.avgRating}
+				hr
+				p Add review
+				.addshortreview
+					form(method = 'Post' action ='/movies/' + movie.id)
+						label(for = "username") Add a Review just a number 
+						br
+						input(type='number' min='0' max='10' name='short' placeholder='Username' required)
+						br
+						br
+						button(type='submit') Add Short Review
+						br
+						br
+				.addLongreviw
+					form(method = 'Post' action ='/movies/' + movie.id)
+						label(for = 'rating') Add a Score
+						br
+						input(type='number' min='0' max='10' name='rating' placeholder='review.....')
+						br
+						label(for = "username") Add a Brief Summary
+						br
+						input(type='text' name='summary' placeholder='summary....' required)
+						br
+						label(for = "username") Add a Review  
+						br
+						input(type='text' name='review' placeholder='review......' required)
+						br
+						button(type='submit') Add Detailed Review
+						br
+						br
+		include ../partials/footer
+	else if session.loggedIn == true && session.contributing == false
+			include ../partials/header
+			div#main
+				a(href= "" + movie.Poster style ='float:middle')
+					img(alt='Google' src= movie.Poster style='max-width:960px')
+				h2 #{movie.Title}
+				br
+				p Initial Release : #{movie.Year}
+				br
+				p Plot :
+				p #{movie.Plot}
+				br
+				p Genres
+					ul
+						each g in movie.Genre
+							a(href="/movies/search/" +g)= g 
+							br
+				br
+				p Director
+				a(href="/people/search/" + movie.Director)= movie.Director 
+				br
+				p Actors
+					ul
+						each a in movie.Actors
+							a(href="/people/search/" +a)= a 
+							br
+				br
+				p Writers
+					ul
+						each w in movie.Writer
+							a(href="/people/search/" +w)= w 
+							br
+				p Similar Movies
+					ul
+						each m in similar
+							a(href="/movies/" +m.id)= m.title 
+							br
+				hr
+				p Reviews
+					ul
+						each r in movie.reviews
+							a(href="/users/" +r.userId)= r.username
+							p Score #{r.score}
+							p #{r.summary}
+							p #{r.text}
+							br
+					ul
+						each r in movie.short
+							a(href="/users/" +r.userId)= r.username
+							p Score #{r.score}
+							br
+				p Average Review : #{movie.avgRating}
+	else 
+		include ../partials/header
+			div#main
+				a(href= "" + movie.Poster style = 'float:middle')
+					img(alt='Google' src= movie.Poster style='max-width:960px')
+				h2 #{movie.Title}
+				br
+				p Initial Release : #{movie.Year}
+				br
+				p Plot :
+				p #{movie.Plot}
+				p Genres
+					ul
+						each g in movie.Genre
+							a(href="/movies/search/" +g)= g 
+							br
+				br
+				p Director
+				a(href="/people/search/" + movie.Director)= movie.Director 
+				br
+				p Actors
+					ul
+						each a in movie.Actors
+							a(href="/people/search/" +a)= a 
+							br
+				
+				p Writers
+					ul
+						each w in movie.Writer
+							a(href="/people/search/" +w)= w 
+							br
+				p Similar Movies
+					ul
+						each m in similar
+							a(href="/movies/" +m.id)= m.title 
+							br
+				hr
+				p Reviews
+					ul
+						each r in movie.reviews
+							a(href="/users/" +r.userId)= r.username
+							p Score #{r.score}
+							p #{r.summary}
+							p #{r.text}
+							br
+					ul
+						each r in movie.short
+							a(href="/users/" +r.userId)= r.username
+							p Score #{r.score}
+							br
+				p Average Review : #{movie.avgRating}
+				hr
+				p Add review
+				.addshortreview
+					form(method = 'Post' action ='/movies/' + movie.id)
+						label(for = "short")  review
+						br
+						input(type='number'  min='0' max='10' name='short' placeholder='review....' required)
+						br
+						button(type='submit') Add Short Review
+						br
+						br
+				.addLongreviw
+					form(method = 'Post' action ='/movies/' + movie.id)
+						label(for = "rating") Add a Score  
+						br
+						input(type='number'  min='0' max='10' name='rating' placeholder='rating....' required)
+						br
+						label(for = "summary") Add a Brief Summary 
+						br
+						input(type='text' name='summary' placeholder='summary...' required)
+						br
+						label(for = "review") Add a Review  
+						br
+						input(type='text' name='review' placeholder='review.....' required)
+						br
+						button(type='submit') Add Detailed Review
+						br
+						br
+		include ../partials/footer
+
+

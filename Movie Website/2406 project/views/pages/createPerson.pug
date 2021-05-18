@@ -1,0 +1,16 @@
+doctype html
+head
+	title Create Person Form
+div#header
+	include ../partials/header
+body(style = 'background-color: #fffaf0')
+		h2 Create a new Person
+		div#create(style = 'float:middle')
+		form(method = "POST" action = "/people")
+			label(for = "personName" style = 'float : middle; font-size: 30px;text-align: center; padding : 5px; margin : 3px') Persons Name
+			br  
+			input(type='text' name='personName' placeholder='Name....' required style = 'float:middle; font-size: 20px')
+			br
+			button(type='submit' style = 'float:middle; font-size: 20px') Create Person
+			br
+			include ../partials/footer
